@@ -1,13 +1,27 @@
 import React from 'react';
+import { timeAgo } from '../utils/date'; 
 
 const Article = ({ article }) => {
-  return (
-    <div className="article">
-      <h2>{article.title}</h2>
-      <p>{article.excerpt}</p>
-      {/* Add more details if needed */}
-    </div>
-  );
+    const publicationDate = article.pubDate[0]; // assuming pubDate is always present
+  
+    return (
+      <div className="article">
+        {article['media:content'] && article['media:content'][0] && (
+          <img src={article['media:content'][0].$.url} alt="Article Image" />
+        )}
+        <div className='article-content'> 
+          <h4>{article.title}</h4>
+          <p className="article-meta">
+            {article.author && (
+              <span className="article-author">{article.author}</span>
+            )}
+            <span className="article-date" style={{ marginLeft: article.author ? '15px' : '0' }}>
+              {timeAgo(publicationDate)}
+            </span>
+          </p>
+        </div>
+      </div>
+    );
 };
 
 export default Article;
