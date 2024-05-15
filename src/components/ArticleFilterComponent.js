@@ -1,30 +1,30 @@
-import React, { useState } from 'react';
+import React from 'react';
+
 
 const ArticleFilterComponent = ({ categories, onFilterChange }) => {
-  const [selectedCategories, setSelectedCategories] = useState([]);
+    const handleCheckboxChange = (event) => {
+        const { value, checked } = event.target;
+        onFilterChange(value, checked);
+    };
 
-  const handleCheckboxChange = (category) => {
-    const updatedCategories = selectedCategories.includes(category)
-      ? selectedCategories.filter((c) => c !== category)
-      : [...selectedCategories, category];
-    setSelectedCategories(updatedCategories);
-    onFilterChange(updatedCategories);
-  };
-
-  return (
-    <div>
-      {categories.map((category) => (
-        <label key={category}>
-          <input
-            type="checkbox"
-            checked={selectedCategories.includes(category)}
-            onChange={() => handleCheckboxChange(category)}
-          />
-          {category}
-        </label>
-      ))}
-    </div>
-  );
+    return (
+        <div>
+            <label>Filter by Category:</label>
+            <div className="checkbox-container">
+                {categories.map((category, index) => (
+                    <div key={index} className="checkbox-item">
+                        <input 
+                            type="checkbox" 
+                            id={`category-${index}`} 
+                            value={category} 
+                            onChange={handleCheckboxChange} 
+                        />
+                        <label htmlFor={`category-${index}`}>{category}</label>
+                    </div>
+                ))}
+            </div>
+        </div>
+    );
 };
 
 export default ArticleFilterComponent;
