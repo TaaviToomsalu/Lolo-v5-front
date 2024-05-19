@@ -1,10 +1,9 @@
-// ArticleFilterComponent.js
 import React from 'react';
 
 const ArticleFilterComponent = ({ categories, onFilterChange }) => {
     const handleSelectChange = (event) => {
         const { value } = event.target;
-        onFilterChange(value); // Send the selected category value to the parent component
+        onFilterChange(value);
     };
 
     return (

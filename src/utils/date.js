@@ -1,4 +1,3 @@
-// utils/date.js
 export const timeAgo = (date) => {
     const now = new Date();
     const past = new Date(date);

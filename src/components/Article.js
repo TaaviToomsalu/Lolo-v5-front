@@ -1,9 +1,8 @@
-// Article.js
 import React from 'react';
 import { timeAgo } from '../utils/date';
 
 const Article = ({ article, onArticleClick }) => {
-    const publicationDate = article.pubDate; // assuming pubDate is always present
+    const publicationDate = article.pubDate;
 
     return (
         <div className="article">

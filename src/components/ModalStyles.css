@@ -1,24 +1,22 @@
-/* ModalStyles.css */
-
 .overlay {
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent overlay */
+    background-color: rgba(0, 0, 0, 0.5);
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow-y: auto; /* Allow overlay to scroll */
+    overflow-y: auto;
 }
 
 .modal {
-    max-width: 1200px; /* Increase the max-width to 900px */
+    max-width: 1200px;
     margin: auto;
     background-color: #fff;
     border-radius: 8px;
-    overflow-y: auto; /* Allow modal content to scroll */
+    overflow-y: auto;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     outline: none;
 }

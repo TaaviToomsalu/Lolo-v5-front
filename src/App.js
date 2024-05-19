@@ -1,9 +1,8 @@
-// App.js
 import React, { useState, useEffect } from 'react';
 import CustomRSSFeedsComponent from './components/CustomRSSFeedsComponent';
 import ArticleFilterComponent from './components/ArticleFilterComponent';
 import Article from './components/Article';
-import ModalComponent from './components/ModalComponent'; // Import ModalComponent
+import ModalComponent from './components/ModalComponent';
 import axios from 'axios';
 import './style.css';
 
@@ -12,8 +11,8 @@ const App = () => {
     const [articles, setArticles] = useState([]);
     const [categories, setCategories] = useState([]);
     const [selectedCategories, setSelectedCategories] = useState([]);
-    const [isModalOpen, setIsModalOpen] = useState(false); // State for modal visibility
-    const [modalContent, setModalContent] = useState(''); // State for modal content
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [modalContent, setModalContent] = useState('');
 
     useEffect(() => {
         fetchFeeds();
