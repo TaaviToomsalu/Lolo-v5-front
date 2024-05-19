@@ -1,5 +1,6 @@
 import React from 'react';
-import { timeAgo } from '../utils/date';
+import { timeAgo } from './utils/date';
+import '../styles/article.css'
 
 const Article = ({ article, onArticleClick }) => {
     const publicationDate = article.pubDate;

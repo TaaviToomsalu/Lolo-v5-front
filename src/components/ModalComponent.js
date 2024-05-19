@@ -1,13 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import Modal from 'react-modal';
 import LoadingSpinner from './LoadingSpinner'; 
-import './ModalStyles.css'; 
+import '../styles/modalStyles.css'; 
 
 Modal.setAppElement('#root');
 
 const ModalComponent = ({ isOpen, onRequestClose, content }) => {
     const [isLoading, setIsLoading] = useState(false);
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const modalContentRef = useRef(null);
 
     useEffect(() => {
         if (isOpen) {
@@ -21,6 +22,7 @@ const ModalComponent = ({ isOpen, onRequestClose, content }) => {
     useEffect(() => {
         if (content) {
             setIsLoading(false);
+            adjustModalDimensions();
         }
     }, [content]);
 
@@ -36,6 +38,28 @@ const ModalComponent = ({ isOpen, onRequestClose, content }) => {
         };
     }, [isModalOpen]);
 
+    const adjustModalDimensions = () => {
+        if (modalContentRef.current) {
+            const modalContent = modalContentRef.current;
+            const modalContentWidth = modalContent.offsetWidth;
+            const modalContentHeight = modalContent.offsetHeight;
+            const windowWidth = window.innerWidth;
+            const windowHeight = window.innerHeight;
+            const maxWidth = windowWidth - 100; // Adjust this value as needed
+            const maxHeight = windowHeight - 100; // Adjust this value as needed
+
+            // Adjust width
+            if (modalContentWidth > maxWidth) {
+                modalContent.style.width = `${maxWidth}px`;
+            }
+
+            // Adjust height
+            if (modalContentHeight > maxHeight) {
+                modalContent.style.maxHeight = `${maxHeight}px`;
+            }
+        }
+    };
+
     return (
         <Modal
             isOpen={isModalOpen}
@@ -48,7 +72,7 @@ const ModalComponent = ({ isOpen, onRequestClose, content }) => {
             {isLoading ? (
                 <LoadingSpinner />
             ) : (
-                <div className="modal-content" dangerouslySetInnerHTML={{ __html: content }} />
+                <div className="modal-content" ref={modalContentRef} dangerouslySetInnerHTML={{ __html: content }} />
             )}
         </Modal>
     );

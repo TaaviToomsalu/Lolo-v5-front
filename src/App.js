@@ -4,7 +4,7 @@ import ArticleFilterComponent from './components/ArticleFilterComponent';
 import Article from './components/Article';
 import ModalComponent from './components/ModalComponent';
 import axios from 'axios';
-import './style.css';
+import './styles/main.css';
 
 const App = () => {
     const [customFeeds, setCustomFeeds] = useState([]);
@@ -98,18 +98,7 @@ const App = () => {
     return (
         <div>
             <h1>Lolo v5</h1>
-            <CustomRSSFeedsComponent onSubmit={handleAddFeed} />
-            <div>
-                <h2>Custom RSS Feeds</h2>
-                <ul>
-                    {customFeeds.map((feed, index) => (
-                        <li key={index}>
-                            {feed}
-                            <button onClick={() => handleDeleteFeed(feed)}>Delete</button>
-                        </li>
-                    ))}
-                </ul>
-            </div>
+            <CustomRSSFeedsComponent onSubmit={handleAddFeed} customFeeds={customFeeds} handleDeleteFeed={handleDeleteFeed} />
             <ArticleFilterComponent categories={categories} onFilterChange={handleFilterChange} />
             <div className="container">
                 <div className="articles-container">

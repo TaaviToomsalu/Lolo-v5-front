@@ -1,7 +1,7 @@
 {
   "name": "lolo-v5-front",
   "version": "0.1.0",
-  "proxy": "http://localhost:5001",
+  "proxy": "http://taavitoomsalu.com:5001",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",

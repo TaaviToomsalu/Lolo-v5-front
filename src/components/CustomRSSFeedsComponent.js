@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
+import '../styles/customRSSFeeds.css'
 
-const CustomRSSFeedsComponent = ({ onSubmit }) => {
+const CustomRSSFeedsComponent = ({ onSubmit, customFeeds, handleDeleteFeed }) => {
     const [url, setUrl] = useState('');
 
     const handleSubmit = (e) => {
@@ -10,9 +11,9 @@ const CustomRSSFeedsComponent = ({ onSubmit }) => {
     };
 
     return (
-        <div>
+        <div className="custom-feeds-section">
             <h2>Add Custom RSS Feed</h2>
-            <form onSubmit={handleSubmit}>
+            <form className="add-feed-form" onSubmit={handleSubmit}>
                 <input 
                     type="text" 
                     value={url} 
@@ -22,6 +23,14 @@ const CustomRSSFeedsComponent = ({ onSubmit }) => {
                 />
                 <button type="submit">Add Feed</button>
             </form>
+            <ul>
+                {customFeeds.map((feed, index) => (
+                    <li key={index}>
+                        {feed}
+                        <button className="delete-button" onClick={() => handleDeleteFeed(feed)}>Delete</button>
+                    </li>
+                ))}
+            </ul>
         </div>
     );
 };

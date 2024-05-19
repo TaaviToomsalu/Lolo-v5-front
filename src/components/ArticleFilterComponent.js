@@ -1,4 +1,5 @@
 import React from 'react';
+import '../styles/articleFilter.css'
 
 const ArticleFilterComponent = ({ categories, onFilterChange }) => {
     const handleSelectChange = (event) => {
@@ -7,7 +8,7 @@ const ArticleFilterComponent = ({ categories, onFilterChange }) => {
     };
 
     return (
-        <div>
+        <div className="article-filter">
             <label htmlFor="category-select">Filter by Category:</label>
             <select id="category-select" onChange={handleSelectChange}>
                 <option value="">All Categories</option>
