@@ -1,28 +1,21 @@
+// ArticleFilterComponent.js
 import React from 'react';
 
-
 const ArticleFilterComponent = ({ categories, onFilterChange }) => {
-    const handleCheckboxChange = (event) => {
-        const { value, checked } = event.target;
-        onFilterChange(value, checked);
+    const handleSelectChange = (event) => {
+        const { value } = event.target;
+        onFilterChange(value); // Send the selected category value to the parent component
     };
 
     return (
         <div>
-            <label>Filter by Category:</label>
-            <div className="checkbox-container">
+            <label htmlFor="category-select">Filter by Category:</label>
+            <select id="category-select" onChange={handleSelectChange}>
+                <option value="">All Categories</option>
                 {categories.map((category, index) => (
-                    <div key={index} className="checkbox-item">
-                        <input 
-                            type="checkbox" 
-                            id={`category-${index}`} 
-                            value={category} 
-                            onChange={handleCheckboxChange} 
-                        />
-                        <label htmlFor={`category-${index}`}>{category}</label>
-                    </div>
+                    <option key={index} value={category}>{category}</option>
                 ))}
-            </div>
+            </select>
         </div>
     );
 };
