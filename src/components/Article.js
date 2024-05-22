@@ -7,6 +7,12 @@ const Article = ({ article, onArticleClick }) => {
 
     return (
         <div className="article">
+            <div className="article-categories">
+                {article?.categories?.map((category) => {
+                if (!category) return;
+                return <div>{category}</div>;
+                })}
+            </div>
             {article.mediaContent && (
                 <img
                     src={article.mediaContent.url}
